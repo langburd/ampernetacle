@@ -37,7 +37,7 @@ data "cloudinit_config" "_" {
       apt:
         sources:
           kubernetes.list:
-            source: "deb https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /"
+            source: "deb https://pkgs.k8s.io/core:/stable:/v1.32/deb/ /"
             key: |
               ${indent(8, data.http.kubernetes_repo_key.response_body)}
           docker.list:
@@ -99,7 +99,7 @@ data "cloudinit_config" "_" {
     content_type = "text/x-shellscript"
     content      = <<-EOF
       #!/bin/sh
-      sed -i "s/-A INPUT -j REJECT --reject-with icmp-host-prohibited//" /etc/iptables/rules.v4 
+      sed -i "s/-A INPUT -j REJECT --reject-with icmp-host-prohibited//" /etc/iptables/rules.v4
       sed -i "s/-A FORWARD -j REJECT --reject-with icmp-host-prohibited//" /etc/iptables/rules.v4
       # There appears to be a bug in the netfilter-persistent scripts:
       # the "reload" and "restart" actions seem to append the rules files

@@ -2,7 +2,11 @@ terraform {
   required_providers {
     oci = {
       source  = "oracle/oci"
-      version = "4.114.0"
+      version = ">= 6.0"
     }
   }
+}
+
+provider "oci" {
+  config_file_profile = "ddyyconsulting" # "langburd"
 }
