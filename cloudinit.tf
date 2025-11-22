@@ -37,7 +37,7 @@ data "cloudinit_config" "_" {
       apt:
         sources:
           kubernetes.list:
-            source: "deb https://pkgs.k8s.io/core:/stable:/v1.32/deb/ /"
+            source: "deb https://pkgs.k8s.io/core:/stable:/v${var.k8s_version}/deb/ /"
             key: |
               ${indent(8, data.http.kubernetes_repo_key.response_body)}
           docker.list:
@@ -164,7 +164,7 @@ data "cloudinit_config" "_" {
 }
 
 data "http" "kubernetes_repo_key" {
-  url = "https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key"
+  url = "https://pkgs.k8s.io/core:/stable:/v${var.k8s_version}/deb/Release.key"
 }
 
 data "http" "docker_repo_key" {

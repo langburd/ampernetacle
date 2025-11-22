@@ -36,3 +36,9 @@ variable "memory_in_gbs_per_node" {
   type    = number
   default = 6
 }
+
+variable "k8s_version" {
+  default     = "1.33"
+  description = "Kubernetes version to install"
+  type        = string
+}
